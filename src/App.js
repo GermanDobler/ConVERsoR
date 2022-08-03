@@ -5,7 +5,9 @@ import PrincipalScreen from './UI/components/PrincipalScreen.jsx';
 function App() {
   return (
     <Fragment>
-      <PrincipalScreen></PrincipalScreen>
+      <div className=''>
+        <PrincipalScreen></PrincipalScreen>
+      </div>
     </Fragment>
   );
 }
