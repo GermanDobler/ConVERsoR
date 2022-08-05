@@ -15,7 +15,7 @@ export default function Historial() {
     console.log(conversiones);
     return (
         <Fragment>
-                <div className="contenedor-historial">
+                <div className="contenedor-historial Glassmorphism">
                 {conversiones.map(conversion =>(
                 <Info 
                 key={conversion.id}
@@ -25,6 +25,4 @@ export default function Historial() {
                 ))}
                 </div>
         </Fragment>
-    );
-    console.log(conversiones.map);
-}
+    );}

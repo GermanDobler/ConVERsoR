@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import "./styles/converter.css";
+import "./styles/Glassmorphism.css";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 export default function Converter() {
     var m1 = "Peso";
@@ -11,9 +11,12 @@ export default function Converter() {
     }
     return(
         <Fragment>
-            <div className="converter-container">
-                <p className="header-text">Convertir {m1} a {m2}</p>
-                <div className="input-container">
+            <div className="contenedor-convertidor Glassmorphism">
+
+                <div className="convertidor-form-input Glassmorphism-2">
+
+                <p className="header-text">INPUT A COIN</p>
+                <div>
                     <FormControl fullWidth>
                         <InputLabel id="input-select-label">Select Coin</InputLabel>
                         <Select
@@ -33,6 +36,11 @@ export default function Converter() {
                 </div>
                 <div className="result-container">
                     <p className="result-value">{result}</p>
+                </div>
+                </div> 
+
+                <div className="convertidor-form-output Glassmorphism-2">
+                    <p>OUTPUT COIN</p>
                 </div>
             </div>
         </Fragment>
