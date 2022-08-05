@@ -1,24 +1,26 @@
 .Glassmorphism{
-    position: relative;
     background: rgba( 255, 255, 255, 0.25 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+
 }
 
-.contenedor-header.Glassmorphism{
-    margin:0px 20px 20px 20px;
-    width: 740px;
-    height: 170px;
+.Glassmorphism.contenedor{
+    margin: 20px;
+
+    grid-column-start:1 ;
+
+    grid-column-end:13 ;
+
+    grid-row-start:1 ;
+
+    grid-row-end:13 ;
+
 }
 
-.contenedor-historial.Glassmorphism{
-    margin:0px 20px 20px 20px;
-    width: 640px;
-    height: 900px;
-}
 
 .img{
     padding: 10px 0px 0px 20px;
