@@ -2,10 +2,11 @@ import { Fragment } from "react";
 import "./styles/PrincipalScreen.css";
 import Converter from "./Converter";
 
-export default function PrincipalScreen(){
+export default function PrincipalScreen() {
 return (
-    <Fragment> 
-        <Converter />
+    <Fragment>
+        <div className="Glassmorphism contenedor">
+            <Historial></Historial>
+        </div>
     </Fragment>
-);
-}
+);}

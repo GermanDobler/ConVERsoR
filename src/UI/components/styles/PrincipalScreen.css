@@ -1,9 +1,3 @@
 .contenedor{
-    background-color: brown;
-    width: 1000px;
-    height: 1000px;
-    margin:0;
-}
-.roow{
-    background-color: blue;
+    padding: 20px;
 }
