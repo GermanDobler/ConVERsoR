@@ -8,12 +8,18 @@ import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoi
 import { EthereumModel } from "./EthereumModel"; //Lo mismo con la moneda de ETH
 
 export default function Converter() {
+    const [data, setData] = useState({});
+    const resolvePackage = (p) => {
+        
+        setData(p);
+    }
+    
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
 
-                <InputForm />
-                <OutputForm />
+                <InputForm onClick={resolvePackage}/>
+                <OutputForm data={data} />
                 
                 {/*Un contenedor que contenga el modelo 3d del bitcoin y el modelo 3d del ethereum*/}
 
