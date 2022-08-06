@@ -81,3 +81,8 @@
     margin: 10px;
 }
 
+.model-container {
+    grid-column: 1 / 4;
+    grid-row: 3 / -1;
+}
+
