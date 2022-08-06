@@ -81,8 +81,13 @@
     margin: 10px;
 }
 
-.model-container {
-    grid-column: 1 / 4;
+.input-coin-container {
+    grid-column: 1 / -1;
+    grid-row: 3 / -1;
+}
+
+.output-coin-container {
+    grid-column: 6 / 9;
     grid-row: 3 / -1;
 }
 

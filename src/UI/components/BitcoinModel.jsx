@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber'
 
-export function Model(props) {
+export function BitcoinModel(props) {
     const myMesh = useRef();
     const myMesh2 = useRef();
   const { nodes, materials } = useGLTF("/coin.gltf");
@@ -19,7 +19,7 @@ export function Model(props) {
         geometry={nodes.Cylinder_1.geometry}
         material={materials["Material.002"]}
         scale={[10, 10, 10]}
-        position={[0, 0, 0]}
+        position={[0, 0, -45]}
         rotation={[0, 0, 0]}
       />
       <mesh
@@ -29,7 +29,7 @@ export function Model(props) {
         geometry={nodes.Cylinder_2.geometry}
         material={materials["Material.003"]}
         scale={[10, 10, 10]}
-        position={[0, 0, 0]}
+        position={[0, 0, -45]}
         rotation={[0, 0, 0]}
       />
     </group>

@@ -1,24 +1,22 @@
 import { Fragment , useState} from "react";
 import "./styles/Glassmorphism.css";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import Model3d from "./Model3d";
-import { Canvas, useThree } from '@react-three/fiber'
-import { useSpring, animated } from '@react-spring/three'
-import { Model } from "./Model";
-import { useGLTF } from "@react-three/drei";
+
+import { Canvas } from '@react-three/fiber' //Importo el componente Canvas de RTF
+import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoin de su propio componente
+import { EthereumModel } from "./EthereumModel"; //Lo mismo con la moneda de ETH
+
 export default function Converter() {
-    const [toggle, setToggle] = useState(false);
-    const [isHover, setIsHover] = useState(false);
+
     var m1 = "Peso";
     var m2 = "Dólar";
     var inputCoin = "";
     var result = "";
+
     const handleInputCoin = () => {
         console.log("handleInputCoin");
     }
 
-    const {scale} = useSpring({ scale: toggle ? 1.5 : 1 })
-    const {position} = useSpring({ position: isHover ? [0, 0, 5] : [0, 0, 0] })
 
     return(
         <Fragment>
@@ -54,26 +52,28 @@ export default function Converter() {
                     <p >OUTPUT COIN</p>
                 </div>
                 
+                {/*Un contenedor que contenga el modelo 3d del bitcoin y el modelo 3d del ethereum*/}
 
-                <div className="model-container">
-                    <Canvas camera={ { fov: 75, near: 0.1, far: 1000, position: [-15, 0, 20] } } >
-                        <ambientLight intensity={0.25} />
-                        <pointLight position={[10, 10, 10]} />
+                <div className="input-coin-container">
+                    <Canvas 
+                    camera={ { fov: 5, near: 0.1, far: 1000, position: [-400, 0, 20] } } 
+                    >   
+                        {/* Una luz ambiental con una intensidad de 0.9 */}
+                        <ambientLight intensity={0.9} /> 
+
+                        {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector */}
+                        <pointLight position={[10, 10, 10]} /> 
+
+                        {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector 3*/}
                         <pointLight position={[-10, -10, -10]} />
-                        <Model/>
-                        {/* <animated.mesh 
-                        scale={scale} 
-                        position={position}
-                        onClick={()=>{setToggle(!toggle)}}
-                        onPointerEnter={()=>{setIsHover(!isHover)}}
-                        onPointerLeave={()=>{setIsHover(!isHover)}}
-                        >
-                            <boxGeometry args={[4, 4, 4]}/>
-                            <meshStandardMaterial color="hotpink" />
-                        </animated.mesh> */}
+
+
+                        {/* Importacion de los modelos 3d */}
+                        <BitcoinModel/> 
+                        <EthereumModel/>
+
                     </Canvas>
                 </div>
-
             </div>
         </Fragment>
     )
