@@ -2,24 +2,23 @@ import { Fragment , useState} from "react";
 import "./styles/Glassmorphism.css";
 import InputForm from "./InputForm";
 import OutputForm from "./OutputForm";
+import Header from "./Header";
 
 import { Canvas } from '@react-three/fiber' //Importo el componente Canvas de RTF
 import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoin de su propio componente
 import { EthereumModel } from "./EthereumModel"; //Lo mismo con la moneda de ETH
 
 export default function Converter() {
-    const [data, setData] = useState({});
     const resolvePackage = (p) => {
-        
-        setData(p);
+        console.log("g")
     }
     
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
-
-                <InputForm onClick={resolvePackage}/>
-                <OutputForm data={data} />
+                <Header />
+                <InputForm />
+                <OutputForm />
                 
                 {/*Un contenedor que contenga el modelo 3d del bitcoin y el modelo 3d del ethereum*/}
 

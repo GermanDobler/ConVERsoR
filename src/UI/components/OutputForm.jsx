@@ -7,7 +7,7 @@ export default function OutputForm(props) {
 
     return(
         <div className="form-output Glassmorphism-2">
-            {props.data}
+            d
         </div>
     )
 }

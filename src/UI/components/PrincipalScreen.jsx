@@ -8,8 +8,7 @@ import "./styles/Glassmorphism.css";
 export default function PrincipalScreen() {
 return (
     <Fragment>
-        <div className="Glassmorphism contenedor">
-            <Header></Header>
+        <div className="contenedor">
             <Converter></Converter>
             <Historial></Historial>
         </div>

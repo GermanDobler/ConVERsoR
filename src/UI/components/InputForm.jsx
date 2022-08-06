@@ -18,15 +18,14 @@ export default function InputForm(props) {
     const handleInputAmount = (event) => {
         setAmount(event.target.value);
     }
+
     const sendPackage = () => {
-        var paquete = {
+        /*var paquete = {
             from: inputCoin,
             to: inputCoin2,
             amount: amount,
-        }
+        }*/
 
-        console.log(paquete);
-        return paquete
     }
     
     return(
@@ -77,7 +76,7 @@ export default function InputForm(props) {
                     onChange={handleInputAmount}
                     />
                 </FormControl>
-                <Button variant="contained" color="primary" onClick={props.onClick(sendPackage)}>
+                <Button variant="contained" color="primary" >
                     Convertir
                 </Button>
             </div>
