@@ -4,6 +4,7 @@ import InputForm from "./InputForm";
 import OutputForm from "./OutputForm";
 import Header from "./Header";
 import Context from "./Context";
+import Info from "./Info";
 
 import { Canvas } from '@react-three/fiber' //Importo el componente Canvas de RTF
 import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoin de su propio componente
@@ -13,6 +14,8 @@ import ModelPicker from "./ModelPicker";
 export default function Converter() {
     const context = useContext(Context);
     const [coin, setCoin] = useState("btc"); //Estado de la moneda seleccionada
+    const [array, setArray] = useState([]); //Estado de las conversiones
+    const [contador, setContador] = useState(0); //Estado del contador de conversiones
     const EQ = {
 
         arsTOdlblue: 0.003,
@@ -64,10 +67,13 @@ export default function Converter() {
     }
     const sendPackage = (p) => {
         console.log(p)
+        console.log(contador)
         setCoin(p.from)
+        p.id += contador;
         var result = EQ[p.from + "TO" + p.to] * p.amount;
         p.result = result;
-        context.push(p);
+        setArray(current => [...current, p]);
+        setContador(contador + 1);
     }
 
     const cambiar = ()=>{   
@@ -106,7 +112,17 @@ export default function Converter() {
 
                     </Canvas>
                 </div>
+                <div className="contenedor-historial Glassmorphism">
+                    {array.map(conversion =>(
+                    <Info 
+                    key={conversion.id}
+                    data={conversion}
+                    >
+                    </Info>
+                    ))}
+                </div>
             </div>
+
         </Fragment>
     )
 }

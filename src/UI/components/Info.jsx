@@ -4,11 +4,11 @@ export default function Info(props) {
     return (
         <Fragment>
             <div>
-                {props.data.contador}
-                {props.data.cantidad}
-                {props.data.a}
-                {props.data.de}
-                {props.data.cambio}
+                {props.data.id}
+                {props.data.amount}
+                {props.data.from}
+                {props.data.to}
+                {props.data.result}
             </div>
         </Fragment>
     );

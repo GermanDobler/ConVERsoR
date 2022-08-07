@@ -7,13 +7,12 @@ import { Provider } from "./Context";
 
 
 export default function PrincipalScreen() {
-    var conversions = []
+    var conversions = [{id: 1, amount: 1000, from: "ARG", to: "USD OFICIAL", result: 1}];
     return (
     <Fragment>
         <Provider value={conversions}>
             <div className="contenedor">
                 <Converter></Converter>
-                <Historial></Historial>
             </div>
         </Provider>
     </Fragment>

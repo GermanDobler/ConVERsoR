@@ -27,7 +27,6 @@ export default function InputForm(props) {
             amount: amount,
         }
         props.resolvePackage(paquete);
-
     }
 
 
