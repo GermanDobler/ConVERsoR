@@ -3,14 +3,18 @@ import Header from "./Header";
 import Converter from "./Converter";
 import Historial from "./Historial";
 import "./styles/Glassmorphism.css";
+import { Provider } from "./Context";
 
 
 export default function PrincipalScreen() {
-return (
+    var conversions = []
+    return (
     <Fragment>
-        <div className="contenedor">
-            <Converter></Converter>
-            <Historial></Historial>
-        </div>
+        <Provider value={conversions}>
+            <div className="contenedor">
+                <Converter></Converter>
+                <Historial></Historial>
+            </div>
+        </Provider>
     </Fragment>
 );}

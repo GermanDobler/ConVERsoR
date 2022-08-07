@@ -5,8 +5,8 @@ import "./styles/formsStyles.css";
 
 export default function InputForm(props) {
     const [amount, setAmount] = useState("");
-    const [inputCoin, setInputCoin] = useState("ARS");
-    const [inputCoin2, setInputCoin2] = useState("ARS");
+    const [inputCoin, setInputCoin] = useState("ars");
+    const [inputCoin2, setInputCoin2] = useState("ars");
 
     const handleInputCoin = (event) => {
         setInputCoin(event.target.value);
@@ -19,20 +19,24 @@ export default function InputForm(props) {
         setAmount(event.target.value);
     }
 
-    const sendPackage = () => {
-        /*var paquete = {
+    const buildAndSendPackage = () => {
+        var paquete = {
+            id: 0,
             from: inputCoin,
             to: inputCoin2,
             amount: amount,
-        }*/
+        }
+        props.resolvePackage(paquete);
 
     }
+
+
     
     return(
         <div className="form-input Glassmorphism-2">
             <p className="header-text">INPUT A COIN</p>
-            {/*Formulario de moneda de entrada y cantidad*/}
-            <div>
+                {/*Formulario de moneda de entrada y cantidad*/}
+                <div>
 
                 <FormControl>
                     <InputLabel id="input-select-label">FROM</InputLabel>
@@ -43,10 +47,10 @@ export default function InputForm(props) {
                         label="Select Coin"
                         onChange={handleInputCoin}
                     >
-                        <MenuItem value={"ARS"}>Peso argentino</MenuItem>
-                        <MenuItem value={"DLBLUE"}>Dolar Blue</MenuItem>
-                        <MenuItem value={"DLOFICIAL"}>Dolar Oficial</MenuItem>
-                        <MenuItem value={"EUR"}>Euro</MenuItem>
+                        <MenuItem value={"ars"}>Peso argentino</MenuItem>
+                        <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
+                        <MenuItem value={"dloficial"}>Dolar Oficial</MenuItem>
+                        <MenuItem value={"eur"}>Euro</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -59,9 +63,9 @@ export default function InputForm(props) {
                         label="Select Coin"
                         onChange={handleInputCoin2}
                     >
-                        <MenuItem value={"ARS"}>Peso argentino</MenuItem>
-                        <MenuItem value={"DLBLUE"}>Dolar Blue</MenuItem>
-                        <MenuItem value={"DLOFICIAL"}>Dolar Oficial</MenuItem>
+                        <MenuItem value={"ars"}>Peso argentino</MenuItem>
+                        <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
+                        <MenuItem value={"dloficial"}>Dolar Oficial</MenuItem>
                         <MenuItem value={"EUR"}>Euro</MenuItem>
                     </Select>
                 </FormControl>
@@ -76,7 +80,7 @@ export default function InputForm(props) {
                     onChange={handleInputAmount}
                     />
                 </FormControl>
-                <Button variant="contained" color="primary" >
+                <Button variant="contained" color="primary" onClick={buildAndSendPackage}>
                     Convertir
                 </Button>
             </div>
