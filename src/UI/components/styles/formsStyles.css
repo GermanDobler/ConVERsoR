@@ -4,11 +4,14 @@
     padding: 35px;
     border-radius: 50px;
     margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
 .form-output {
     grid-column: 6 / 9;
-    grid-row: 2 / 3;
+    grid-row: 2 / -1;
     padding: 35px;
     border-radius: 50px;
     margin: 10px;

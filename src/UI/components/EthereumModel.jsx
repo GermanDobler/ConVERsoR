@@ -12,15 +12,13 @@ export function EthereumModel(props) {
   })
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI, 0, 0]} scale={0.29}>
+      <group rotation={[-Math.PI, 0, 0]} scale={3.4} position={props.pos}>
         <mesh
           ref={myMesh}
           castShadow
           receiveShadow
           geometry={nodes.Cube002.geometry}
           material={materials["Material.002"]}
-          scale={[10, 10, 10]}
-          position={[0, 0, -150]}
           rotation={[0, 0, 0]}
         />
         <mesh
@@ -29,8 +27,6 @@ export function EthereumModel(props) {
           receiveShadow
           geometry={nodes.Cube002_1.geometry}
           material={materials["Material.001"]}
-          scale={[10, 10, 10]}
-          position={[0, 0, -150]}
           rotation={[0, 0, 0]}
         />
       </group>

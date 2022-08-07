@@ -6,10 +6,10 @@ export function ArsModel(props) {
     const myMesh = useRef();
   const { nodes, materials } = useGLTF("/arscoin.gltf");
     useFrame(({clock})=>{
-        myMesh.current.rotation.y = clock.getElapsedTime() * 1.2
+        myMesh.current.rotation.y = clock.getElapsedTime()
     })
   return (
-    <group {...props} dispose={null} ref={myMesh}>
+    <group {...props} position={props.pos} dispose={null} ref={myMesh} scale={11.4}>
       <mesh
         castShadow
         receiveShadow

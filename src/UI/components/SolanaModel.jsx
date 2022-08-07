@@ -7,11 +7,11 @@ export function SolanaModel(props) {
 
   const { nodes, materials } = useGLTF("/solanacoin.gltf");
   useFrame(({clock})=>{
-    myMesh.current.rotation.y = clock.getElapsedTime() * 1.2
+    myMesh.current.rotation.y = clock.getElapsedTime()
   })
   return (
     <group {...props} dispose={null}>
-      <group position={[0, 0.03, 0.01]} scale={[1.1, 1.1, 1.1]} ref={myMesh}>
+      <group position={props.pos} scale={1.3} ref={myMesh}>
         <mesh
           castShadow
           receiveShadow

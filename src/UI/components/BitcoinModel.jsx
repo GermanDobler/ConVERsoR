@@ -11,15 +11,13 @@ export function BitcoinModel(props) {
     myMesh2.current.rotation.y = clock.getElapsedTime()
   })
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} scale={12} position={props.pos}>
       <mesh
         ref={myMesh}
         castShadow
         receiveShadow
         geometry={nodes.Cylinder_1.geometry}
         material={materials["Material.002"]}
-        scale={[10, 10, 10]}
-        position={[0, 0, -45]}
         rotation={[0, 0, 0]}
       />
       <mesh
@@ -28,8 +26,6 @@ export function BitcoinModel(props) {
         receiveShadow
         geometry={nodes.Cylinder_2.geometry}
         material={materials["Material.003"]}
-        scale={[10, 10, 10]}
-        position={[0, 0, -45]}
         rotation={[0, 0, 0]}
       />
     </group>

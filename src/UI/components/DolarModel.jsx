@@ -6,14 +6,14 @@ export function DolarModel(props) {
     const myMesh = useRef();
   const { nodes, materials } = useGLTF("/dolarcoin.gltf");
     useFrame(({clock})=>{
-        myMesh.current.rotation.y = clock.getElapsedTime() * 1.2
+        myMesh.current.rotation.z = clock.getElapsedTime() 
     })
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} position={props.pos}>
       <group
-        position={[0.14, 0, 0]}
-        rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={0.81}
+        position={[0, 0, 0]}
+        rotation={[1.5708, 0 ,1.5708 ]}
+        scale={[10, 10, 10]}
         ref={myMesh}
       >
         <mesh

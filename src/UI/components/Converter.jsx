@@ -6,16 +6,8 @@ import Header from "./Header";
 import Context from "./Context";
 import Info from "./Info";
 
-import { Canvas } from '@react-three/fiber' //Importo el componente Canvas de RTF
-import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoin de su propio componente
-import { EthereumModel } from "./EthereumModel"; //Lo mismo con la moneda de ETH
-import { SolanaModel} from './SolanaModel.jsx';
-import { EuroModel } from "./EuroModel";
-import { DolarModel } from "./DolarModel";
-import { ArsModel } from "./ArsModel";
-
 export default function Converter() {
-    const [coin, setCoin] = useState("btc"); //Estado de la moneda seleccionada
+    
     const [array, setArray] = useState([]); //Estado de las conversiones
     const [contador, setContador] = useState(0); //Estado del contador de conversiones
     const EQ = {
@@ -70,7 +62,7 @@ export default function Converter() {
     const sendPackage = (p) => {
         console.log(p)
         console.log(contador)
-        setCoin(p.from)
+        //setCoin(p.from)
         p.id += contador;
         var result = EQ[p.from + "TO" + p.to] * p.amount;
         p.result = result;
@@ -79,45 +71,17 @@ export default function Converter() {
     }
 
     const coinChanged = (p)=>{   
-        setCoin(p)
+        /*setCoin(p)*/
     }
     
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
                 <Header />
-                <InputForm setCoin={coinChanged} resolvePackage={sendPackage}/>
+                <InputForm resolvePackage={sendPackage}/>
                 <OutputForm />
                 
                 {/*Un contenedor que contenga el modelo 3d del bitcoin y el modelo 3d del ethereum*/}
-
-                <div className="input-coin-container">
-
-                    <Canvas 
-                    camera={ { fov: 5, near: 0.1, far: 1000, position: [-400, 0, 20] } } 
-                    >   
-                        {/* Una luz ambiental con una intensidad de 0.9 */}
-                        <ambientLight intensity={0.9} /> 
-
-                        {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector */}
-                        <pointLight position={[10, 10, 10]} /> 
-
-                        {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector 3*/}
-                        <pointLight position={[-10, -10, -10]} />
-
-
-                        {/* Importacion de los modelos 3d */}
-                        {coin === "btc" ? <BitcoinModel /> : null}
-                        {coin === "eth" ? <EthereumModel /> : null}
-                        {coin === "sol" ? <SolanaModel /> : null}
-                        {coin === "ars" ? <ArsModel /> : null}
-                        {coin === "eur" ? <EuroModel /> : null}
-                        {coin === "dlblue" ? <DolarModel /> : null}
-                        {coin === "dloficial" ? <DolarModel /> : null}
-
-                    </Canvas> 
-
-                </div>
             </div>
             <div className="contenedor-historial Glassmorphism">
                     {array.map(conversion =>(

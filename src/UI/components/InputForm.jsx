@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem, Input, Button } from "@mui/material";
+import InputCoin from "./InputCoin";
+
 import "./styles/Glassmorphism.css";
 import "./styles/formsStyles.css";
+
+
+import { Canvas } from '@react-three/fiber' //Importo el componente Canvas de RTF
+import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoin de su propio componente
+import { EthereumModel } from "./EthereumModel"; //Lo mismo con la moneda de ETH
+import { SolanaModel} from './SolanaModel.jsx';
+import { EuroModel } from "./EuroModel";
+import { DolarModel } from "./DolarModel";
+import { ArsModel } from "./ArsModel";
 
 export default function InputForm(props) {
     const [amount, setAmount] = useState("");
@@ -10,8 +21,6 @@ export default function InputForm(props) {
 
     const handleInputCoin = (event) => {
         setInputCoin(event.target.value);
-        console.log(event.target.value);
-        props.setCoin(event.target.value);
     }
     const handleInputCoin2 = (event) => {
         setInputCoin2(event.target.value);
@@ -20,6 +29,7 @@ export default function InputForm(props) {
     const handleInputAmount = (event) => {
         setAmount(event.target.value);
     }
+
 
     const buildAndSendPackage = () => {
         var paquete = {
@@ -34,14 +44,43 @@ export default function InputForm(props) {
         setAmount("");
     }
 
-
-    
     return(
         <div className="form-input Glassmorphism-2">
-            <p className="header-text">INPUT A COIN</p>
-                {/*Formulario de moneda de entrada y cantidad*/}
-                <div>
 
+            <div className="input-coin-container">
+                <Canvas 
+                camera={ { fov: 5, near: 0.1, far: 1000, position: [-400, 0, 20] } } 
+                >   
+                    {/* Una luz ambiental con una intensidad de 0.9 */}
+                    <ambientLight intensity={0.9} /> 
+
+                    {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector */}
+                    <pointLight position={[10, 10, 10]} /> 
+
+                    {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector 3*/}
+                    <pointLight position={[-10, -10, -10]} />
+
+                    {/* Importacion de los modelos 3d */}
+                    {inputCoin === "btc" ? <BitcoinModel pos={[0, 0, -25]}/> : null}
+                    {inputCoin === "eth" ? <EthereumModel pos={[0, 0, -25]}/> : null}
+                    {inputCoin === "sol" ? <SolanaModel  pos={[0, 0, -25]}/> : null}
+                    {inputCoin === "ars" ? <ArsModel pos={[0, 0, -25]}/> : null}
+                    {inputCoin === "eur" ? <EuroModel pos={[0, 0, -25]}/> : null}
+                    {inputCoin === "dlblue" ? <DolarModel pos={[0, 0, -25]}/> : null}
+                    {inputCoin === "dloficial" ? <DolarModel pos={[0, 0, -25]}/> : null}
+
+                    {inputCoin2 === "btc" ? <BitcoinModel  pos={[0, 0, 25]} /> : null}
+                    {inputCoin2 === "eth" ? <EthereumModel pos={[0, 0, 25]}/> : null}
+                    {inputCoin2 === "sol" ? <SolanaModel pos={[0, 0, 25]}/> : null}
+                    {inputCoin2 === "ars" ? <ArsModel pos={[0, 0, 25]}/> : null}
+                    {inputCoin2 === "eur" ? <EuroModel pos={[0, 0, 25]}/> : null}
+                    {inputCoin2 === "dlblue" ? <DolarModel pos={[0, 0, 25]}/> : null}
+                    {inputCoin2 === "dloficial" ? <DolarModel pos={[0, 0, 25]}/> : null}
+
+                </Canvas> 
+            </div>
+            
+            <div>
                 <FormControl>
                     <InputLabel id="input-select-label">FROM</InputLabel>
                     <Select
@@ -55,6 +94,9 @@ export default function InputForm(props) {
                         <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
                         <MenuItem value={"dloficial"}>Dolar Oficial</MenuItem>
                         <MenuItem value={"eur"}>Euro</MenuItem>
+                        <MenuItem value={"btc"}>Bitcoin</MenuItem>
+                        <MenuItem value={"eth"}>Ethereum</MenuItem>
+                        <MenuItem value={"sol"}>Solana</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -71,6 +113,9 @@ export default function InputForm(props) {
                         <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
                         <MenuItem value={"dloficial"}>Dolar Oficial</MenuItem>
                         <MenuItem value={"eur"}>Euro</MenuItem>
+                        <MenuItem value={"btc"}>Bitcoin</MenuItem>
+                        <MenuItem value={"eth"}>Ethereum</MenuItem>
+                        <MenuItem value={"sol"}>Solana</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -87,14 +132,8 @@ export default function InputForm(props) {
                 <Button variant="contained" color="primary" onClick={buildAndSendPackage}>
                     Convertir
                 </Button>
-
-                
             </div>
-
-            <div>
-
-            </div>
-
+            
         </div> 
     )
 }
