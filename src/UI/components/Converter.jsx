@@ -9,10 +9,12 @@ import Info from "./Info";
 import { Canvas } from '@react-three/fiber' //Importo el componente Canvas de RTF
 import { BitcoinModel } from "./BitcoinModel"; //Importo el modelo 3d del bitcoin de su propio componente
 import { EthereumModel } from "./EthereumModel"; //Lo mismo con la moneda de ETH
-import ModelPicker from "./ModelPicker";
+import { SolanaModel} from './SolanaModel.jsx';
+import { EuroModel } from "./EuroModel";
+import { DolarModel } from "./DolarModel";
+import { ArsModel } from "./ArsModel";
 
 export default function Converter() {
-    const context = useContext(Context);
     const [coin, setCoin] = useState("btc"); //Estado de la moneda seleccionada
     const [array, setArray] = useState([]); //Estado de las conversiones
     const [contador, setContador] = useState(0); //Estado del contador de conversiones
@@ -76,24 +78,21 @@ export default function Converter() {
         setContador(contador + 1);
     }
 
-    const cambiar = ()=>{   
-        setCoin("eth")
-        console.log(context)
+    const coinChanged = (p)=>{   
+        setCoin(p)
     }
     
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
                 <Header />
-                <InputForm resolvePackage={sendPackage}/>
+                <InputForm setCoin={coinChanged} resolvePackage={sendPackage}/>
                 <OutputForm />
                 
                 {/*Un contenedor que contenga el modelo 3d del bitcoin y el modelo 3d del ethereum*/}
 
                 <div className="input-coin-container">
-                <button onClick={cambiar}>
-                    TEST CAMBIAR MODELO 
-                </button>
+
                     <Canvas 
                     camera={ { fov: 5, near: 0.1, far: 1000, position: [-400, 0, 20] } } 
                     >   
@@ -108,11 +107,19 @@ export default function Converter() {
 
 
                         {/* Importacion de los modelos 3d */}
-                        <ModelPicker coin={coin}/>
+                        {coin === "btc" ? <BitcoinModel /> : null}
+                        {coin === "eth" ? <EthereumModel /> : null}
+                        {coin === "sol" ? <SolanaModel /> : null}
+                        {coin === "ars" ? <ArsModel /> : null}
+                        {coin === "eur" ? <EuroModel /> : null}
+                        {coin === "dlblue" ? <DolarModel /> : null}
+                        {coin === "dloficial" ? <DolarModel /> : null}
 
-                    </Canvas>
+                    </Canvas> 
+
                 </div>
-                <div className="contenedor-historial Glassmorphism">
+            </div>
+            <div className="contenedor-historial Glassmorphism">
                     {array.map(conversion =>(
                     <Info 
                     key={conversion.id}
@@ -120,7 +127,6 @@ export default function Converter() {
                     >
                     </Info>
                     ))}
-                </div>
             </div>
 
         </Fragment>

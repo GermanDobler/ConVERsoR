@@ -1,6 +1,6 @@
 .form-input {
-    grid-column: 1 / 6;
-    grid-row: 2 / 3;
+    grid-column: 1 / 5;
+    grid-row: 2 / -1;
     padding: 35px;
     border-radius: 50px;
     margin: 10px;

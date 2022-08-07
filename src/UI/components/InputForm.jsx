@@ -5,11 +5,13 @@ import "./styles/formsStyles.css";
 
 export default function InputForm(props) {
     const [amount, setAmount] = useState("");
-    const [inputCoin, setInputCoin] = useState("ars");
-    const [inputCoin2, setInputCoin2] = useState("ars");
+    const [inputCoin, setInputCoin] = useState("");
+    const [inputCoin2, setInputCoin2] = useState("");
 
     const handleInputCoin = (event) => {
         setInputCoin(event.target.value);
+        console.log(event.target.value);
+        props.setCoin(event.target.value);
     }
     const handleInputCoin2 = (event) => {
         setInputCoin2(event.target.value);
@@ -27,6 +29,9 @@ export default function InputForm(props) {
             amount: amount,
         }
         props.resolvePackage(paquete);
+        setInputCoin("");
+        setInputCoin2("");
+        setAmount("");
     }
 
 
@@ -65,7 +70,7 @@ export default function InputForm(props) {
                         <MenuItem value={"ars"}>Peso argentino</MenuItem>
                         <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
                         <MenuItem value={"dloficial"}>Dolar Oficial</MenuItem>
-                        <MenuItem value={"EUR"}>Euro</MenuItem>
+                        <MenuItem value={"eur"}>Euro</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -82,6 +87,8 @@ export default function InputForm(props) {
                 <Button variant="contained" color="primary" onClick={buildAndSendPackage}>
                     Convertir
                 </Button>
+
+                
             </div>
 
             <div>
