@@ -9,9 +9,9 @@ import Info from "./Info";
 export default function Converter() {
     
     const [array, setArray] = useState([]); //Estado de las conversiones
-    const [contador, setContador] = useState(0); //Estado del contador de conversiones
     const [coin, setCoin] = useState(""); //Estado de la moneda de entrada
     const [result, setResult] = useState(""); //Estado del resultado de la conversion
+    const [actualPackage, setActualPackage] = useState("");
     const EQ = {
 
         arsTOdlblue: 0.003,
@@ -64,28 +64,30 @@ export default function Converter() {
     
     const sendPackage = (p) => {
         console.log(p)
-        console.log(contador)
         setCoin(p.to)
-        p.id += contador;
         var result = EQ[p.from + "TO" + p.to] * p.amount;
         p.result = result;
         setResult(result);
         setArray(current => [...current, p]);
-        setContador(contador + 1);
-    }
+        setActualPackage(p)
 
+    }
     const coinChanged = (p)=>{   
         setCoin(p)
     }
-    
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] == array[6]) {
+            array.shift()
+        }
+      }
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
                 <Header />
                 <InputForm resolvePackage={sendPackage} onOutputCoinChanged={coinChanged}/>
-                <OutputForm coinState={coin} result={result}/>
+                <OutputForm coinState={coin} result={result} data={actualPackage}/>
             </div>
-            <div className="contenedor-historial Glassmorphism">
+            <div className="contenedor-historial">
                     {array.map(conversion =>(
                     <Info 
                     key={conversion.id}

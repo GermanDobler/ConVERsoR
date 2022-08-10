@@ -9,13 +9,13 @@ import { SolanaModel} from './SolanaModel.jsx';
 import { EuroModel } from "./EuroModel";
 import { DolarModel } from "./DolarModel";
 import { ArsModel } from "./ArsModel";
+import Info from "./Info";
 
-export default function OutputForm({coinState, result}) {
-
+export default function OutputForm({coinState,data}) {
     return(
         <div className="form-output Glassmorphism-2">
             <p></p>
-            <p>{result}</p>
+            <Info data={data}></Info> 
             <Canvas
             camera={ { fov: 5, near: 0.1, far: 1000, position: [-800, 0, 20] } }
             >   

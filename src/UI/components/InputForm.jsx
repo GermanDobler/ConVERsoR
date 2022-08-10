@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem, Input, Button } from "@mui/material";
-import InputCoin from "./InputCoin";
-
 import "./styles/Glassmorphism.css";
 import "./styles/formsStyles.css";
 
@@ -18,7 +16,7 @@ export default function InputForm(props) {
     const [amount, setAmount] = useState("");
     const [inputCoin, setInputCoin] = useState("");
     const [inputCoin2, setInputCoin2] = useState("");
-
+    const [contador,setContador] = useState(0);
     const handleInputCoin = (event) => {
         setInputCoin(event.target.value);
     }
@@ -34,12 +32,13 @@ export default function InputForm(props) {
 
     const buildAndSendPackage = () => {
         var paquete = {
-            id: 0,
+            id: contador,
             from: inputCoin,
             to: inputCoin2,
             amount: amount,
         }
         props.resolvePackage(paquete);
+        setContador(contador+1)
         setAmount("");
     }
 
@@ -115,6 +114,7 @@ export default function InputForm(props) {
                     <InputLabel id="input-amount-label">Cantidad</InputLabel>
                     <Input 
                     required={true}
+                    type="number"
                     labelId="input-amount-label"
                     id='input-amount'
                     value={amount}
