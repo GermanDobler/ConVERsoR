@@ -1,4 +1,4 @@
-import { Fragment , useState, useContext} from "react";
+import { Fragment , useState, useContext, useEffect} from "react";
 import "./styles/Glassmorphism.css";
 import InputForm from "./InputForm";
 import OutputForm from "./OutputForm";
@@ -11,6 +11,8 @@ export default function Converter() {
     const [array, setArray] = useState([]); //Estado de las conversiones
     const [coin, setCoin] = useState(""); //Estado de la moneda de entrada
     const [result, setResult] = useState(""); //Estado del resultado de la conversion
+    const [contador, setContador] = useState("");
+    const [scrollbar, setScrollbar] = useState(false);
     const [actualPackage, setActualPackage] = useState("");
     const EQ = {
 
@@ -61,7 +63,15 @@ export default function Converter() {
         solTOeth: 25,
         solTObtc: 25,
     }
-    
+    useEffect(() => {
+        if (array.length > 7){
+            setScrollbar(true)
+            console.log("SIIII")
+        }
+        else if(array.length < 7){
+            setScrollbar(false)
+            console.log("NOOOOOOOOOOOOOOOOO");
+        }},[array])
     const sendPackage = (p) => {
         console.log(p)
         setCoin(p.to)
@@ -70,16 +80,17 @@ export default function Converter() {
         setResult(result);
         setArray(current => [p, ...current]);
         setActualPackage(p)
+        setContador(contador+1);
     }
     const coinChanged = (p)=>{   
         setCoin(p)
     }
-    for (var i = 0; i < array.length; i++) {
-        if (array[i] == array[6]) {
-            let lastElement = array[array.length - 1];
-            array.shift()
-        }
-      }
+
+    // for (var i = 0; i < array.length; i++) {
+    //     if (array[i] == array[7]) {
+    //         setScrollbar(true);
+    //     }
+    // }
 
     return(
         <Fragment>

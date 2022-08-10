@@ -70,10 +70,11 @@ export default function InputForm(props) {
             </div>
             
             <div className="data-form">
-                <FormControl>
-                    <InputLabel id="input-select-label">FROM</InputLabel>
+                <FormControl required="required">
+                    <InputLabel id="input-select-label-required-label">FROM</InputLabel>
                     <Select
-                        labelId="input-select-label"
+                        required="true"
+                        labelId="input-select-label-required-label"
                         id="input-select"
                         value={inputCoin}
                         label="Select Coin"
@@ -91,9 +92,9 @@ export default function InputForm(props) {
                 </FormControl>
 
                 <FormControl>
-                    <InputLabel id="input-select-label-2">TO</InputLabel>
+                    <InputLabel id="input-select-label-2-required-label">TO</InputLabel>
                     <Select
-                        labelId="input-select-label-2"
+                        labelId="input-select-label-2-required-label"
                         id="input-select-2"
                         value={inputCoin2}
                         label="Select Coin"

@@ -76,8 +76,8 @@ export default function Info(props) {
             {props.data.to == "dloficial" ?
               <img src={require('./moneda-dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             <div>
-              {props.data.to === "" ? "- No Data -" : ""}
-              {props.data.result == 0 || isNaN(props.data.result) == true ? "- No Data -" : props.data.result}
+              {props.data.to === "" ? " - " : ""}
+              {props.data.result == 0 || isNaN(props.data.result) == true ? " - " : props.data.result}
             </div>
           </Item>
         </Box>
