@@ -16,3 +16,39 @@
     border-radius: 50px;
     margin: 10px;
 }
+
+
+.data-form{
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    padding: 35px;
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.coin-select{
+    height: 40px;
+    width: 140px;
+}
+.send{
+    
+}
+
+.send-button{
+    margin: 10px;
+}
+
+#input-select{
+    justify-self: flex-start;
+    
+}
+
+#input-select-2{
+    justify-self: flex-start;
+}
+
+#input-amount{
+    justify-self: flex-end;
+}

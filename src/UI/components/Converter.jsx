@@ -10,6 +10,8 @@ export default function Converter() {
     
     const [array, setArray] = useState([]); //Estado de las conversiones
     const [contador, setContador] = useState(0); //Estado del contador de conversiones
+    const [coin, setCoin] = useState(""); //Estado de la moneda de entrada
+    const [result, setResult] = useState(""); //Estado del resultado de la conversion
     const EQ = {
 
         arsTOdlblue: 0.003,
@@ -59,29 +61,29 @@ export default function Converter() {
         solTOeth: 25,
         solTObtc: 25,
     }
+    
     const sendPackage = (p) => {
         console.log(p)
         console.log(contador)
-        //setCoin(p.from)
+        setCoin(p.to)
         p.id += contador;
         var result = EQ[p.from + "TO" + p.to] * p.amount;
         p.result = result;
+        setResult(result);
         setArray(current => [...current, p]);
         setContador(contador + 1);
     }
 
     const coinChanged = (p)=>{   
-        /*setCoin(p)*/
+        setCoin(p)
     }
     
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
                 <Header />
-                <InputForm resolvePackage={sendPackage}/>
-                <OutputForm />
-                
-                {/*Un contenedor que contenga el modelo 3d del bitcoin y el modelo 3d del ethereum*/}
+                <InputForm resolvePackage={sendPackage} onOutputCoinChanged={coinChanged}/>
+                <OutputForm coinState={coin} result={result}/>
             </div>
             <div className="contenedor-historial Glassmorphism">
                     {array.map(conversion =>(

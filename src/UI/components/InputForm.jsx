@@ -24,6 +24,7 @@ export default function InputForm(props) {
     }
     const handleInputCoin2 = (event) => {
         setInputCoin2(event.target.value);
+        props.onOutputCoinChanged(event.target.value);
     }
 
     const handleInputAmount = (event) => {
@@ -39,8 +40,6 @@ export default function InputForm(props) {
             amount: amount,
         }
         props.resolvePackage(paquete);
-        setInputCoin("");
-        setInputCoin2("");
         setAmount("");
     }
 
@@ -61,26 +60,17 @@ export default function InputForm(props) {
                     <pointLight position={[-10, -10, -10]} />
 
                     {/* Importacion de los modelos 3d */}
-                    {inputCoin === "btc" ? <BitcoinModel pos={[0, 0, -25]}/> : null}
-                    {inputCoin === "eth" ? <EthereumModel pos={[0, 0, -25]}/> : null}
-                    {inputCoin === "sol" ? <SolanaModel  pos={[0, 0, -25]}/> : null}
-                    {inputCoin === "ars" ? <ArsModel pos={[0, 0, -25]}/> : null}
-                    {inputCoin === "eur" ? <EuroModel pos={[0, 0, -25]}/> : null}
-                    {inputCoin === "dlblue" ? <DolarModel pos={[0, 0, -25]}/> : null}
-                    {inputCoin === "dloficial" ? <DolarModel pos={[0, 0, -25]}/> : null}
-
-                    {inputCoin2 === "btc" ? <BitcoinModel  pos={[0, 0, 25]} /> : null}
-                    {inputCoin2 === "eth" ? <EthereumModel pos={[0, 0, 25]}/> : null}
-                    {inputCoin2 === "sol" ? <SolanaModel pos={[0, 0, 25]}/> : null}
-                    {inputCoin2 === "ars" ? <ArsModel pos={[0, 0, 25]}/> : null}
-                    {inputCoin2 === "eur" ? <EuroModel pos={[0, 0, 25]}/> : null}
-                    {inputCoin2 === "dlblue" ? <DolarModel pos={[0, 0, 25]}/> : null}
-                    {inputCoin2 === "dloficial" ? <DolarModel pos={[0, 0, 25]}/> : null}
-
+                    {inputCoin === "btc" ? <BitcoinModel pos={[0, 0, 0]}/> : null}
+                    {inputCoin === "eth" ? <EthereumModel pos={[0, 0, 0]}/> : null}
+                    {inputCoin === "sol" ? <SolanaModel  pos={[0, 0, 0]}/> : null}
+                    {inputCoin === "ars" ? <ArsModel pos={[0, 0, 0]}/> : null}
+                    {inputCoin === "eur" ? <EuroModel pos={[0, 0, 0]}/> : null}
+                    {inputCoin === "dlblue" ? <DolarModel pos={[0, 0, 0]}/> : null}
+                    {inputCoin === "dloficial" ? <DolarModel pos={[0, 0, 0]}/> : null}
                 </Canvas> 
             </div>
             
-            <div>
+            <div className="data-form">
                 <FormControl>
                     <InputLabel id="input-select-label">FROM</InputLabel>
                     <Select
@@ -89,6 +79,7 @@ export default function InputForm(props) {
                         value={inputCoin}
                         label="Select Coin"
                         onChange={handleInputCoin}
+                        className={"coin-select"}
                     >
                         <MenuItem value={"ars"}>Peso argentino</MenuItem>
                         <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
@@ -108,6 +99,7 @@ export default function InputForm(props) {
                         value={inputCoin2}
                         label="Select Coin"
                         onChange={handleInputCoin2}
+                        className={"coin-select"}
                     >
                         <MenuItem value={"ars"}>Peso argentino</MenuItem>
                         <MenuItem value={"dlblue"}>Dolar Blue</MenuItem>
@@ -127,9 +119,10 @@ export default function InputForm(props) {
                     id='input-amount'
                     value={amount}
                     onChange={handleInputAmount}
+                    className={"send"}
                     />
                 </FormControl>
-                <Button variant="contained" color="primary" onClick={buildAndSendPackage}>
+                <Button className={"send send-button"} variant="contained" color="primary" onClick={buildAndSendPackage}>
                     Convertir
                 </Button>
             </div>
