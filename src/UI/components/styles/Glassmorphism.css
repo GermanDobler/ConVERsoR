@@ -1,3 +1,6 @@
+.centrar {
+    margin-top: 10px;
+}
 .items{
     margin-bottom: 20px;
     background: rgba( 255, 255, 255, 0.25 );
@@ -70,8 +73,6 @@
 }
 
 .contenedor-historial {
-    display: flex;
-    flex-direction:column-reverse ;
     grid-column: 10 / 13;
     grid-row:  1/ -1;
     padding: 35px;
