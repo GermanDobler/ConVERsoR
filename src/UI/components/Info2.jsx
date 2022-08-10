@@ -1,10 +1,8 @@
 import { Box } from "@mui/system";
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { useState } from "react";
 import { Fragment } from "react";
 import "./styles/Glassmorphism.css";
-import Button from "@mui/material/Button";
 function Item(props) {
   const { sx, ...other } = props;
   return (
@@ -35,14 +33,12 @@ Item.propTypes = {
 export default function Info(props) {
   return (
     <Fragment>
-      <div>
+      <div className="items">
         <Box
-        id={props.data.id}
-        className="items"
           sx={{
             textAlign: 'center',
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
           <Item>
@@ -82,15 +78,6 @@ export default function Info(props) {
             <div>
               {props.data.to === "" ? "- No Data -" : ""}
               {props.data.result == 0 || isNaN(props.data.result) == true ? "- No Data -" : props.data.result}
-            </div>
-          </Item>
-          <Item>
-            <div className="centrar">
-            <Button variant="outlined" color="error" onClick={(e) => {
-              var element = document.getElementById(props.data.id);
-              return element.parentNode.removeChild(element);}}>
-              E
-            </Button>
             </div>
           </Item>
         </Box>

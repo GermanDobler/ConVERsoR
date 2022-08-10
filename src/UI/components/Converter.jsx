@@ -68,18 +68,19 @@ export default function Converter() {
         var result = EQ[p.from + "TO" + p.to] * p.amount;
         p.result = result;
         setResult(result);
-        setArray(current => [...current, p]);
+        setArray(current => [p, ...current]);
         setActualPackage(p)
-
     }
     const coinChanged = (p)=>{   
         setCoin(p)
     }
     for (var i = 0; i < array.length; i++) {
         if (array[i] == array[6]) {
+            let lastElement = array[array.length - 1];
             array.shift()
         }
       }
+
     return(
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
