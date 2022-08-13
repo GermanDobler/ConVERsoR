@@ -1,13 +1,14 @@
-import { Fragment , useState, useContext, useEffect} from "react";
+import { Fragment, useState, useContext, useEffect } from "react";
 import "./styles/Glassmorphism.css";
 import InputForm from "./InputForm";
 import OutputForm from "./OutputForm";
 import Header from "./Header";
 import Context from "./Context";
+import Grid from '@mui/material/Grid';
 import Info from "./Info";
 
 export default function Converter() {
-    
+
     const [array, setArray] = useState([]); //Estado de las conversiones
     const [coin, setCoin] = useState(""); //Estado de la moneda de entrada
     const [result, setResult] = useState(""); //Estado del resultado de la conversion
@@ -19,7 +20,7 @@ export default function Converter() {
         arsTOdlblue: 0.003,
         arsTOdloficial: 0.0075,
         arsTOeur: 0.0074,
-        arsTOeth:  0.0000045,
+        arsTOeth: 0.0000045,
         arsTObtc: 0.00025,
         arsTOsol: 0.00025,
 
@@ -64,14 +65,15 @@ export default function Converter() {
         solTObtc: 25,
     }
     useEffect(() => {
-        if (array.length > 7){
+        if (array.length > 7) {
             setScrollbar(true)
             console.log("SIIII")
         }
-        else if(array.length < 7){
+        else if (array.length < 7) {
             setScrollbar(false)
             console.log("NOOOOOOOOOOOOOOOOO");
-        }},[array])
+        }
+    }, [array])
     const sendPackage = (p) => {
         console.log(p)
         setCoin(p.to)
@@ -80,9 +82,9 @@ export default function Converter() {
         setResult(result);
         setArray(current => [p, ...current]);
         setActualPackage(p)
-        setContador(contador+1);
+        setContador(contador + 1);
     }
-    const coinChanged = (p)=>{   
+    const coinChanged = (p) => {
         setCoin(p)
     }
 
@@ -92,21 +94,21 @@ export default function Converter() {
     //     }
     // }
 
-    return(
+    return (
         <Fragment>
             <div className="contenedor-convertidor Glassmorphism">
-                <Header />
-                <InputForm resolvePackage={sendPackage} onOutputCoinChanged={coinChanged}/>
-                <OutputForm coinState={coin} result={result} data={actualPackage}/>
+                    <Header />
+                    <InputForm resolvePackage={sendPackage} onOutputCoinChanged={coinChanged} />
+                    <OutputForm coinState={coin} result={result} data={actualPackage} />
             </div>
             <div className="contenedor-historial">
-                    {array.map(conversion =>(
-                    <Info 
-                    key={conversion.id}
-                    data={conversion}
+                {array.map(conversion => (
+                    <Info
+                        key={conversion.id}
+                        data={conversion}
                     >
                     </Info>
-                    ))}
+                ))}
             </div>
 
         </Fragment>

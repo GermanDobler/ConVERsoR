@@ -57,9 +57,9 @@ export default function Info(props) {
             {props.data.from === "eur" ?
               <img src={require('./euro.png')} className="img" height={40} width={40} alt="EURO" /> : null}
             {props.data.from === "dlblue" ?
-              <img src={require('./moneda-dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
+              <img src={require('./dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             {props.data.from === "dloficial" ?
-              <img src={require('./moneda-dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
+              <img src={require('./dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             <div>
               {props.data.amount === "" ? " - " : props.data.amount}
             </div>
@@ -76,9 +76,9 @@ export default function Info(props) {
             {props.data.to === "eur" ?
               <img src={require('./euro.png')} className="img" height={40} width={40} alt="EURO" /> : null}
             {props.data.to === "dlblue" ?
-              <img src={require('./moneda-dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
+              <img src={require('./dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             {props.data.to == "dloficial" ?
-              <img src={require('./moneda-dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
+              <img src={require('./dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             <div>
               {props.data.to === "" ? " - " : ""}
               {props.data.result == 0 || isNaN(props.data.result) == true ? " - " : props.data.result}
@@ -86,11 +86,11 @@ export default function Info(props) {
           </Item>
           <Item>
             <div className="centrar">
-            <Button variant="outlined" color="error" onClick={(e) => {
+            <i className="btn" onClick={(e) => {
               var element = document.getElementById(props.data.id);
               return element.parentNode.removeChild(element);}}>
-              E
-            </Button>
+                <img src={require('./trash-bin.png')} className="img" height={40} width={40} alt="Eliminar" />
+            </i>
             </div>
           </Item>
         </Box>

@@ -1,4 +1,8 @@
 body {
+  color: rgb(0, 0, 0);
+
+  mix-blend-mode: difference;
+  
   margin: 0px;
 
   padding: 0px;
@@ -27,7 +31,7 @@ body {
 
   background: linear-gradient(137deg, rgba(237,126,174,1) 23%, rgba(93,159,237,1) 52%, rgba(93,95,237,1) 97%);  */
 
-  background-image: url("../public/nonblurbackground.png");
+  background-image: url("../public/background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
