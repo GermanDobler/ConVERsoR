@@ -8,8 +8,6 @@ function Item(props) {
   return (
     <Box
       sx={{
-        m: 1,
-        p: 2,
         borderRadius: 2,
         fontSize: '0.875rem',
         fontWeight: '700',
@@ -57,7 +55,7 @@ export default function Info(props) {
             {props.data.from === "dloficial" ?
               <img src={require('./dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             <div>
-              {props.data.amount}
+              {props.data.amount === "" ? "- No Data -" : props.data.amount}
             </div>
           </Item>
           <Item>
@@ -76,7 +74,8 @@ export default function Info(props) {
             {props.data.to == "dloficial" ?
               <img src={require('./dolar.png')} className="img" height={40} width={40} alt="DOLAR" /> : null}
             <div>
-              {props.data.result}
+              {props.data.to === "" ? " - " : ""}
+              {props.data.result == 0 || isNaN(props.data.result) == true ? " - " : props.data.result}
             </div>
           </Item>
         </Box>

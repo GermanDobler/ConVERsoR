@@ -17,6 +17,8 @@ export default function OutputForm({coinState,data}) {
             <p></p>
             <Info2 data={data}></Info2> 
             <Canvas
+            className="canvas-coin"
+            style={{}}
             camera={ { fov: 5, near: 0.1, far: 1000, position: [-800, 0, 20] } }
             >   
             <ambientLight intensity={0.9} /> 
@@ -27,13 +29,13 @@ export default function OutputForm({coinState,data}) {
                     {/* Una luz puntual con una intensidad de 0.9 y una posición en el escenario definida por un vector 3*/}
                     <pointLight position={[-10, -10, -10]} />
 
-                    {coinState === "btc" ? <BitcoinModel /> : null}
-                    {coinState === "eth" ? <EthereumModel /> : null}
-                    {coinState === "sol" ? <SolanaModel  /> : null}
-                    {coinState === "ars" ? <ArsModel /> : null}
-                    {coinState === "eur" ? <EuroModel /> : null}
-                    {coinState === "dlblue" ? <DolarModel /> : null}
-                    {coinState === "dloficial" ? <DolarModel /> : null}
+                    {coinState === "btc" ? <BitcoinModel pos={[0, -8, 0]}/> : null}
+                    {coinState === "eth" ? <EthereumModel pos={[0, -8, 0]}/> : null}
+                    {coinState === "sol" ? <SolanaModel  pos={[0, -8, 0]}/> : null}
+                    {coinState === "ars" ? <ArsModel pos={[0, -8, 0]}/> : null}
+                    {coinState === "eur" ? <EuroModel pos={[0, -8, 0]}/> : null}
+                    {coinState === "dlblue" ? <DolarModel pos={[0, -8, 0]}/> : null}
+                    {coinState === "dloficial" ? <DolarModel pos={[0, -8, 0]} /> : null}
 
             </Canvas>
         </div>
